@@ -1,5 +1,7 @@
 package br.com.mudi.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 import br.com.mudi.model.Pedido;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,8 +9,11 @@ import lombok.Setter;
 @Getter @Setter
 public class NovoPedidoRequest 
 {
+	@NotEmpty
 	private String nomeProduto;
+	@NotEmpty
 	private String urlProduto;
+	@NotEmpty
 	private String urlImagem;
 	private String descricao;
 	

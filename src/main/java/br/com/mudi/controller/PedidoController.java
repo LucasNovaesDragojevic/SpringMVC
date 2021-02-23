@@ -1,7 +1,10 @@
 package br.com.mudi.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,15 +21,19 @@ public class PedidoController
 	private PedidoRepository pedidoRepository;
 	
 	@GetMapping("formulario")
-	public String formulario() 
+	public String formulario(NovoPedidoRequest novoPedidoRequest) 
 	{
 		return "pedido/formulario";
 	}
 	
 	@PostMapping("novo")
-	public String novo(NovoPedidoRequest novoPedidoResquet)
+	public String novo(@Valid NovoPedidoRequest novoPedidoRequest, BindingResult bindResult)
 	{
-		Pedido pedido = novoPedidoResquet.toPedido();
+		if (bindResult.hasErrors())
+		{
+			return "/pedido/formulario";
+		}
+		Pedido pedido = novoPedidoRequest.toPedido();
 		pedidoRepository.save(pedido);
 		return "redirect:/home";
 	}
