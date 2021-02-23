@@ -8,7 +8,26 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="card" th:each="pedido : ${pedidos}">
+			<div class="jumbotron jumbotron-fluid mb-0">
+				<div class="container">
+					<h1 class="display-4">Meus Pedidos</h1>
+				</div>
+			</div>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-between" id="navbarLinks">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="">Todos</a>
+						<a class="nav-item nav-link" href="">Aguardando</a>
+						<a class="nav-item nav-link" href="">Aprovado</a>
+						<a class="nav-item nav-link" href="">Entregue</a>
+					</div>
+					<a class="btn btn-outline-dark" href="pedido/formulario">Novo</a>
+				</div>
+			</nav>
+			<div class="card mb-2" th:each="pedido : ${pedidos}">
 				<div class="card-header" th:text="${pedido.nomeProduto}">Nome produto</div>
 				<div class="card-body">
 					<div class="row">
