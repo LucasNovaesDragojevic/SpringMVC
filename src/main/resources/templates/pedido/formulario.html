@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Novo pedido</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	</head>
+	<head th:replace="~{base :: head}"></head>
 	<body>
+		<div th:replace="~{base :: logo}"></div>
 		<div class="container">
-			<div class="jumbotron jumbotron-fluid mb-0">
-				<div class="container">
-					<h1 class="display-4">Meus Pedidos</h1>
-				</div>
-			</div>
+			<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+			<nav th:replace="~{base :: navbar}"></nav>
 			<div class="card mt-2">
 				<div class="card-body">
 					<form th:action="@{/pedido/novo}" method="post" th:object="${novoPedidoRequest}">
