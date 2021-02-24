@@ -3,6 +3,7 @@ package br.com.mudi.dto;
 import javax.validation.constraints.NotEmpty;
 
 import br.com.mudi.model.Pedido;
+import br.com.mudi.model.StatusPedido;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +25,7 @@ public class NovoPedidoRequest
 		pedido.setUrlProduto(urlProduto);
 		pedido.setUrlImagem(urlImagem);
 		pedido.setDescricao(descricao);
+		pedido.setStatusPedido(StatusPedido.AGUARDANDO);
 		return pedido;
 	}
 }

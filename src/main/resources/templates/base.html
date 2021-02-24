@@ -26,17 +26,17 @@
 	</div>
 </div>
 
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+<nav th:fragment="navbar" class="navbar navbar-expand-sm navbar-light bg-light mb-3">
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	<div class="collapse navbar-collapse justify-content-between" id="navbarLinks">
 		<div class="navbar-nav">
-			<a class="nav-item nav-link active" href="">Todos</a>
-			<a class="nav-item nav-link" href="">Aguardando</a>
-			<a class="nav-item nav-link" href="">Aprovado</a>
-			<a class="nav-item nav-link" href="">Entregue</a>
+			<a class="nav-item nav-link" href="/home" th:classappend="${status} == null ? 'active'">Todos</a>
+			<a class="nav-item nav-link" href="/home/aguardando" th:classappend="${status} == 'aguardando' ? 'active'">Aguardando</a>
+			<a class="nav-item nav-link" href="/home/aprovado" th:classappend="${status} == 'aprovado' ? 'active'">Aprovado</a>
+			<a class="nav-item nav-link" href="/home/entregue" th:classappend="${status} == 'entregue' ? 'active'">Entregue</a>
 		</div>
-		<a class="btn btn-outline-dark" href="pedido/formulario">Novo</a>
+		<a class="btn btn-outline-dark" href="/pedido/formulario">Novo</a>
 	</div>
 </nav>
