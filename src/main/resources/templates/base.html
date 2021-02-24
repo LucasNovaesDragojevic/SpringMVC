@@ -15,13 +15,25 @@
     </style>
 </head>
 
-<div th:fragment="logo" class="logo-container mb-2 p-3 d-flex justify-content-between">
-	<span class="logo">MUDI</span>
-	<span class="mt-3">
-		<a class="text-light" href="/login" sec:authorize="!isAuthenticated()">Login</a>
-		<a class="text-light" href="/logout" sec:authorize="isAuthenticated()" onclick="document.querySelector('#form-logout').submit()">Logout</a>
-		<form id="form-logout" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()"/>
-	</span>
+<div th:fragment="logo">
+	<div class="row">
+		<div class="col logo-container mb-2 p-3 d-flex justify-content-between">
+			<span class="logo ml-3">MUDI</span>
+			<span class="mt-3 mr-3">
+				<a class="text-light" href="/login" sec:authorize="!isAuthenticated()">Login</a>
+				<a class="text-light" href="/logout" sec:authorize="isAuthenticated()" onclick="document.querySelector('#form-logout').submit()">Logout</a>
+				<form id="form-logout" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()"></form>
+			</span>
+		</div>
+	</div>
+	<div class="row" sec:authorize="isAuthenticated()">
+		<div class="col">
+			<nav class="nav mb-2">
+				<a class="nav-link" th:href="@{/home}">Home</a>
+				<a class="nav-link" th:href="@{/usuario/pedido}">Meus pedidos</a>
+			</nav>
+		</div>
+	</div>
 </div>
 
 <div th:fragment="titulo(valor)" class="jumbotron jumbotron-fluid mb-0">
@@ -29,18 +41,3 @@
 		<h1 class="display-4" th:text="${valor}"></h1>
 	</div>
 </div>
-
-<nav th:fragment="navbar" class="navbar navbar-expand-sm navbar-light bg-light mb-3">
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse justify-content-between" id="navbarLinks">
-		<div class="navbar-nav">
-			<a class="nav-item nav-link" href="/home" th:classappend="${status} == null ? 'active'">Todos</a>
-			<a class="nav-item nav-link" href="/home/aguardando" th:classappend="${status} == 'aguardando' ? 'active'">Aguardando</a>
-			<a class="nav-item nav-link" href="/home/aprovado" th:classappend="${status} == 'aprovado' ? 'active'">Aprovado</a>
-			<a class="nav-item nav-link" href="/home/entregue" th:classappend="${status} == 'entregue' ? 'active'">Entregue</a>
-		</div>
-		<a class="btn btn-outline-dark" href="/pedido/formulario">Novo</a>
-	</div>
-</nav>

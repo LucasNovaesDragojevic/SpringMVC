@@ -5,7 +5,6 @@
 		<div th:replace="~{base :: logo}"></div>
 		<div class="container">
 			<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
-			<nav th:replace="~{base :: navbar}"></nav>
 			<div class="card mt-2">
 				<div class="card-body">
 					<form th:action="@{/pedido/novo}" method="post" th:object="${novoPedidoRequest}">
