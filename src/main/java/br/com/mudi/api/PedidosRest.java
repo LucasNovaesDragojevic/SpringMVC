@@ -26,7 +26,6 @@ public class PedidosRest
 		Sort sort = Sort.by("id").descending();
 		PageRequest pageRequest = PageRequest.of(0, 3, sort);
 		List<Pedido> pedidos = pedidoRepository.findByStatusPedido(StatusPedido.AGUARDANDO, pageRequest);
-		pedidos.forEach(System.out::println);
 		return pedidos;
 	}
 }
